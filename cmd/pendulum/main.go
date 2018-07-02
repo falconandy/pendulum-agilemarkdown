@@ -13,7 +13,7 @@ import (
 	"github.com/elazarl/go-bindata-assetfs"
 	"github.com/go-chi/chi"
 
-	"github.com/titpetric/pendulum"
+	"github.com/falconandy/pendulum-agilemarkdown"
 )
 
 // Serves index.html in case the requested file isn't found (or some other os.Stat error)

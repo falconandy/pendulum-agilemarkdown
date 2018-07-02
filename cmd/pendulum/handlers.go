@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/titpetric/pendulum/cmd/agilemarkdown"
+	"github.com/falconandy/pendulum-agilemarkdown/cmd/agilemarkdown"
 	"net/http"
 	"strings"
 )
