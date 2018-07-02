@@ -5,7 +5,7 @@ cache:
   directories:
   - "front/node_modules"
 before_install:
-  - gimme 1.10.x
+  - gimme 1.10
   - go version
   - go get github.com/mitchellh/gox
   - go get github.com/tcnksm/ghr
