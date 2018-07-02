@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"encoding/json"
-	"github.com/falconandy/pendulum-agilemarkdown/cmd/agilemarkdown"
+	"github.com/titpetric/pendulum/cmd/agilemarkdown"
 	"io/ioutil"
 	"net/http"
 )

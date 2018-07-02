@@ -1,19 +1,19 @@
-language: node_js
-node_js:
-  - "node"
+language: go
+go:
+  - "1.10.x"
+go_import_path: github.com/titpetric/pendulum
 cache:
   directories:
   - "front/node_modules"
+env:
+  - "PATH=/home/travis/gopath/bin:$PATH REPO_VERSION=$(git log -1 --format=%cd --date=unix) REPO_TAG=$(date -d @$REPO_VERSION +%Y.%m.%d.%H%M%S)"
 before_install:
-  - gimme 1.10.3
-  - source ~/.gimme/envs/go1.10.3.env
+  - nvm install node
 before_script:
   - go version
   - go get github.com/tcnksm/ghr
   - go get github.com/jteeuwen/go-bindata/...
 script:
   - ./build_all.sh
-env:
-  - "PATH=/home/travis/gopath/bin:$PATH REPO_VERSION=$(git log -1 --format=%cd --date=unix) REPO_TAG=$(date -d @$REPO_VERSION +%Y.%m.%d.%H%M%S)"
 after_success:
   - ghr --username falconandy --token $GITHUB_TOKEN --replace --prerelease --debug $REPO_TAG build/
