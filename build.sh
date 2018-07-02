@@ -4,10 +4,10 @@ PROJECT=$(basename $(dirname $(readlink -f $0)))
 
 go generate
 
-NAMES=$(ls cmd/* -d | xargs -n1 basename)
+NAMES=$(ls cmd/* -d | xargs -n1 basename | grep -v agilemarkdown)
 for NAME in $NAMES; do
 	OSES=${OSS:-"linux darwin windows"}
-	ARCHS=${ARCHS:-"amd64 386"}
+	ARCHS=${ARCHS:-"amd64"}
 	for ARCH in $ARCHS; do
 		for OS in $OSES; do
 			echo $OS $ARCH $NAME

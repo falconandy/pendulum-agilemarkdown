@@ -10,7 +10,6 @@ env:
 before_install:
   - nvm install node
 before_script:
-  - go version
   - go get github.com/tcnksm/ghr
   - go get github.com/jteeuwen/go-bindata/...
 script:
