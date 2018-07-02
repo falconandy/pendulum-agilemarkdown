@@ -11,7 +11,8 @@ before_script:
   - go version
   - go get github.com/tcnksm/ghr
   - go get github.com/jteeuwen/go-bindata/...
-  - go get -d github.com/titpetric/pendulum/...
+  - go get -d github.com/titpetric/pendulum
+  - go get -d github.com/titpetric/pendulum/cmd/agilemarkdown
   - go get -t ./...
 script:
   - ./build_all.sh
