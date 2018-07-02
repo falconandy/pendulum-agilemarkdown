@@ -1,14 +1,20 @@
 language: node_js
 node_js:
   - "node"
+cache:
+  directories:
+  - "front/node_modules"
 before_install:
   - sudo curl -O https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
   - sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
   - go get github.com/mitchellh/gox
   - go get github.com/tcnksm/ghr
-  - go get -u github.com/jteeuwen/go-bindata/...
+  - go get github.com/jteeuwen/go-bindata/...
+  - go get ./...
 script:
   - ./build_all.sh
-cache:
-  directories:
-  - "front/node_modules"
+env:
+  - "PATH=/home/travis/gopath/bin:$PATH REPO_VERSION=$(git log -1 --format=%cd --date=unix) REPO_TAG=$(date -d @$REPO_VERSION +%Y.%m.%d.%H%M%S)"
+after_success:
+  - gox -ldflags "-X main.version=$REPO_VERSION" -osarch="linux/amd64 windows/amd64 darwin/amd64" -output "dist/{{.Dir}}_{{.OS}}_{{.Arch}}"
+  - ghr --username falconandy --token $GITHUB_TOKEN --replace --prerelease --debug $REPO_TAG dist/
