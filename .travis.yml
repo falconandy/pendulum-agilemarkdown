@@ -10,3 +10,15 @@ matrix:
       cache:
         directories:
         - "node_modules"
+
+    - language: go
+      go:
+        - "1.10.x"
+      env:
+        - "PATH=/home/travis/gopath/bin:$PATH REPO_VERSION=$(git log -1 --format=%cd --date=unix) REPO_TAG=$(date -d @$REPO_VERSION +%Y.%m.%d.%H%M%S)"
+      before_install:
+        - go get github.com/mitchellh/gox
+        - go get github.com/tcnksm/ghr
+        - go get -u github.com/jteeuwen/go-bindata/...
+      script:
+        - ./build.sh
