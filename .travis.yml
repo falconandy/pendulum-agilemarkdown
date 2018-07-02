@@ -2,8 +2,8 @@ language: node_js
 node_js:
   - "node"
 before_install:
-  - curl -O https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
-  - tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
+  - sudo curl -O https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
+  - sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
   - go get github.com/mitchellh/gox
   - go get github.com/tcnksm/ghr
   - go get -u github.com/jteeuwen/go-bindata/...
