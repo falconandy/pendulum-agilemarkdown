@@ -4,12 +4,12 @@ matrix:
       node_js:
         - "node"
       before_script:
-        - cd ./front
+        - cd front
       script:
         - ./build.sh
       cache:
         directories:
-        - "node_modules"
+        - "front/node_modules"
 
     - language: go
       go:
