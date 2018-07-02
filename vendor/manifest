@@ -2,6 +2,14 @@
 	"version": 0,
 	"dependencies": [
 		{
+			"importpath": "github.com/dgrijalva/jwt-go",
+			"repository": "https://github.com/dgrijalva/jwt-go",
+			"vcs": "git",
+			"revision": "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e",
+			"branch": "master",
+			"notests": true
+		},
+		{
 			"importpath": "github.com/elazarl/go-bindata-assetfs",
 			"repository": "https://github.com/elazarl/go-bindata-assetfs",
 			"vcs": "git",
