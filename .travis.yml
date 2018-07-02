@@ -5,8 +5,7 @@ cache:
   directories:
   - "front/node_modules"
 before_install:
-  - sudo curl -O https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
-  - sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
+  - gimme stable
   - go version
   - go get github.com/mitchellh/gox
   - go get github.com/tcnksm/ghr
