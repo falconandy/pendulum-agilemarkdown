@@ -1,24 +1,14 @@
-matrix:
-  include:
-    - language: node_js
-      node_js:
-        - "node"
-      before_script:
-        - cd front
-      script:
-        - ./build.sh
-      cache:
-        directories:
-        - "front/node_modules"
-
-    - language: go
-      go:
-        - "1.10.x"
-      env:
-        - "PATH=/home/travis/gopath/bin:$PATH REPO_VERSION=$(git log -1 --format=%cd --date=unix) REPO_TAG=$(date -d @$REPO_VERSION +%Y.%m.%d.%H%M%S)"
-      before_install:
-        - go get github.com/mitchellh/gox
-        - go get github.com/tcnksm/ghr
-        - go get -u github.com/jteeuwen/go-bindata/...
-      script:
-        - ./build.sh
+language: node_js
+node_js:
+  - "node"
+before_install:
+  - curl -O https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
+  - tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
+  - go get github.com/mitchellh/gox
+  - go get github.com/tcnksm/ghr
+  - go get -u github.com/jteeuwen/go-bindata/...
+script:
+  - ./build_all.sh
+cache:
+  directories:
+  - "front/node_modules"
