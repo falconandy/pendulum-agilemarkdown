@@ -14,7 +14,7 @@ before_install:
 script:
   - ./build_all.sh
 env:
-  - "PATH=/home/travis/gopath/bin:/usr/local/go:$PATH REPO_VERSION=$(git log -1 --format=%cd --date=unix) REPO_TAG=$(date -d @$REPO_VERSION +%Y.%m.%d.%H%M%S)"
+  - "PATH=/usr/local/go:/home/travis/gopath/bin:$PATH REPO_VERSION=$(git log -1 --format=%cd --date=unix) REPO_TAG=$(date -d @$REPO_VERSION +%Y.%m.%d.%H%M%S)"
 after_success:
   - gox -ldflags "-X main.version=$REPO_VERSION" -osarch="linux/amd64 windows/amd64 darwin/amd64" -output "dist/{{.Dir}}_{{.OS}}_{{.Arch}}"
   - ghr --username falconandy --token $GITHUB_TOKEN --replace --prerelease --debug $REPO_TAG dist/
