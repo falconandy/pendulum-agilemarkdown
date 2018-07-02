@@ -4,7 +4,7 @@ matrix:
       node_js:
         - "node"
       before_script:
-        - cd front
+        - cd ./front
       script:
         - ./build.sh
       cache:
